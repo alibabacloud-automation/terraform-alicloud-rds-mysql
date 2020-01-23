@@ -1,10 +1,10 @@
-# MySql Alibaba Cloud Rds Terraform Module
+# MySql-5.6-Enterprise Alibaba Cloud Rds Terraform Module
 
 ## Usage
 
 ```hcl
 module "mysql" {
-  source  = "terraform-alicloud-modules/rds/mysql/alicloud//mysql"
+  source  = "terraform-alicloud-modules/rds-mysql/alicloud//mysql-5.6-enterprise"
   version = "~> 1.0"
   # insert the 2 required variables here
 }
