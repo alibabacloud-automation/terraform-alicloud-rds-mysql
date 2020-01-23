@@ -5,16 +5,16 @@ provider "alicloud" {
   shared_credentials_file = var.shared_credentials_file != "" ? var.shared_credentials_file : null
   region                  = var.region != "" ? var.region : null
   skip_region_validation  = var.skip_region_validation
-  configuration_source    = "terraform-alicloud-modules/rds/mysql"
+  configuration_source    = "terraform-alicloud-modules/rds-mysql"
 }
 locals {
   engine         = "MySQL"
-  engine_version = "5.7"
+  engine_version = "8.0"
 }
 data "alicloud_db_instance_classes" "default" {
   engine         = local.engine
   engine_version = local.engine_version
-  //category       = "Basic"
+  category       = "HighAvailability"
   storage_type = var.instance_storage_type
 }
 module "mysql" {

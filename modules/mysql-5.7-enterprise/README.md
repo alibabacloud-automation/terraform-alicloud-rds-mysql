@@ -1,10 +1,10 @@
-# Alibaba Cloud RDS example for MySQL Databases
+# MySql-5.7-Enterprise Alibaba Cloud Rds Terraform Module
 
 ## Usage
 
 ```hcl
-module "rds_db_database" {
-  source  = "terraform-alicloud-modules/rds-mysql/alicloud//modules/database"
+module "mysql" {
+  source  = "terraform-alicloud-modules/rds-mysql/alicloud//mysql-5.7-enterprise"
   version = "~> 1.0"
   # insert the 2 required variables here
 }

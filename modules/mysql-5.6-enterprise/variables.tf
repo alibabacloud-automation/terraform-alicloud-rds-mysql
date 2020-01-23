@@ -1,7 +1,6 @@
 #################
 # Provider
 #################
-
 variable "region" {
   description = "The region used to launch this module resources."
   type        = string
@@ -97,6 +96,11 @@ variable "webhook" {
 # Mysql Instance
 #################
 
+variable "instance_storage_type" {
+  description = "The storage type of the instance"
+  type        = string
+  default     = "local_ssd"
+}
 variable "existing_instance_id" {
   description = "The Id of an existing mysql instance. If set, the `create_instance` will be ignored."
   type        = string
@@ -138,6 +142,7 @@ variable "instance_storage" {
 
 variable "instance_type" {
   description = "MySQL Instance type, for example: mysql.n1.micro.1. full list is : https://www.alibabacloud.com/help/zh/doc-detail/26312.htm"
+  type        = string
   default     = ""
 }
 
@@ -204,7 +209,7 @@ variable "log_backup_retention_period" {
 variable "allocate_public_connection" {
   description = "Whether to allocate public connection for a MySQL instance. If true, the connection_prefix can not be empty."
   type        = bool
-  default     = false
+  default     = true
 }
 variable "connection_prefix" {
   description = "Prefix of an Internet connection string. A random name prefixed with 'tf-rds-' will be set if it is empty."

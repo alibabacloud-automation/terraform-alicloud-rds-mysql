@@ -15,7 +15,7 @@ module "security_group" {
 }
 
 module "mysql" {
-  source                     = "../modules/mysql"
+  source                     = "../modules/mysql-5.7-basic"
   region                     = var.region
   allocate_public_connection = false
   #################

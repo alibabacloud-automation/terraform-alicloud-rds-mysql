@@ -1,5 +1,4 @@
 Terraform module which create a MySql database based on Alibaba Cloud RDS Service.  
-
 terraform-alicloud-rds-mysql
 -------
 
@@ -23,7 +22,7 @@ terraform-alicloud-rds-mysql
 
 ```hcl
 module "mysql" {
-  source            = "terraform-alicloud-modules/rds/mysql/alicloud"
+  source            = "terraform-alicloud-modules/rds-mysql/alicloud"
   engine            = "MySQL"
   engine_version    = "5.7"
   region            = "cn-hangzhou"

@@ -98,10 +98,12 @@ variable "webhook" {
 
 variable "instance_storage_type" {
   description = "The storage type of the instance"
+  type        = string
   default     = "local_ssd"
 }
 variable "existing_instance_id" {
   description = "The Id of an existing mysql instance. If set, the `create_instance` will be ignored."
+  type        = string
   default     = ""
 }
 
@@ -113,15 +115,18 @@ variable "create_instance" {
 
 variable "engine_version" {
   description = "RDS Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`"
+  type        = string
   default     = ""
 }
 
 variable "instance_name" {
   description = "The name of MySQL Instance. A random name prefixed with 'terraform-rds-' will be set if it is empty."
+  type        = string
   default     = ""
 }
 variable "instance_charge_type" {
   description = "The instance charge type. Valid values: Prepaid and Postpaid. Default to Postpaid."
+  type        = string
   default     = "Postpaid"
 }
 variable "mysql_period" {
@@ -137,6 +142,7 @@ variable "instance_storage" {
 
 variable "instance_type" {
   description = "MySQL Instance type, for example: mysql.n1.micro.1. full list is : https://www.alibabacloud.com/help/zh/doc-detail/26312.htm"
+  type        = string
   default     = ""
 }
 
@@ -148,6 +154,7 @@ variable "security_group_ids" {
 
 variable "vswitch_id" {
   description = "The virtual switch ID to launch MySQL Instances in one VPC."
+  type        = string
   default     = ""
 }
 
@@ -173,6 +180,7 @@ variable "preferred_backup_period" {
 
 variable "preferred_backup_time" {
   description = " MySQL Instance backup time, in the format of HH:mmZ- HH:mmZ. "
+  type        = string
   default     = "02:00Z-03:00Z"
 }
 
@@ -238,23 +246,28 @@ variable "create_account" {
 }
 variable "account_name" {
   description = "Name of a new database account. It should be set when create_account = true."
+  type        = string
   default     = ""
 }
 variable "password" {
   description = "Operation database account password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters."
+  type        = string
   default     = ""
 }
 variable "type" {
   description = "Privilege type of account. Normal: Common privilege. Super: High privilege.Default to Normal."
+  type        = string
   default     = "Normal"
 }
 variable "privilege" {
   description = "The privilege of one account access database."
+  type        = string
   default     = "ReadOnly"
 }
 
 variable "db_instance_id" {
   description = "The Id of instance in which database belongs."
+  type        = string
   default     = ""
 }
 

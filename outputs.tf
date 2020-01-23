@@ -167,7 +167,7 @@ output "this_db_database_id" {
   value       = module.databases.this_database_id
 }
 output "this_db_database_name" {
-  description = "MySQL database id."
+  description = "MySQL database name."
   value       = module.databases.this_database_name
 }
 
