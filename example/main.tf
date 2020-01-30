@@ -15,13 +15,12 @@ module "security_group" {
 }
 
 module "mysql" {
-  source                     = "../modules/mysql-5.7-basic"
-  region                     = var.region
-  allocate_public_connection = false
+  source = "../modules/mysql-5.7-basic"
+  region = var.region
+
   #################
   # Rds Instance
   #################
-
   vswitch_id         = data.alicloud_vpcs.default.vpcs.0.vswitch_ids.0
   instance_name      = "MysqlInstance"
   security_group_ids = [module.security_group.this_security_group_id]
@@ -38,6 +37,8 @@ module "mysql" {
   backup_retention_period     = 7
   log_backup_retention_period = 7
   enable_backup_log           = true
+  allocate_public_connection  = false
+  instance_type               = "rds.mysql.s2.large"
   ###########
   #databases#
   ###########
@@ -66,16 +67,11 @@ module "mysql" {
   #############
   # cms_alarm
   #############
-  cms_name        = "tf-testAccCmsAlarm_mysql"
-  project         = "acs_rds_dashboard"
+  cms_name        = "CmsAlarmForMysql"
   statistics      = "Average"
   cms_period      = 300
   operator        = "<="
   threshold       = 35
   triggered_count = 2
-  contact_groups  = ["MySQL", "tf-testAccCms"]
+  contact_groups  = ["MySQL", "AccCms"]
 }
-
-
-
-

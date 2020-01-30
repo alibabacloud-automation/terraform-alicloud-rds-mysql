@@ -55,7 +55,7 @@ variable "password" {
   default     = ""
 }
 variable "type" {
-  description = "Privilege type of account. Normal: Common privilege. Super: High privilege.Default to Normal."
+  description = "Privilege type of account. Normal: Common privilege. Super: High privilege. Default to Normal."
   type        = string
   default     = "Normal"
 }
