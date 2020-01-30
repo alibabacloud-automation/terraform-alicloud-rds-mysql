@@ -15,7 +15,7 @@ data "alicloud_db_instance_classes" "default" {
   engine         = local.engine
   engine_version = local.engine_version
   category       = "Basic"
-  storage_type = var.instance_storage_type
+  storage_type   = var.instance_storage_type
 }
 module "mysql" {
   source = "../../"

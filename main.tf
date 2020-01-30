@@ -42,8 +42,14 @@ resource "alicloud_db_instance" "this" {
   period               = var.mysql_period
   security_ips         = var.security_ips
   vswitch_id           = var.vswitch_id
-  tags                 = var.tags
-  security_group_ids   = var.security_group_ids
+  tags = merge(
+    {
+      Name   = var.instance_name
+      Engine = local.engine
+    },
+    var.tags,
+  )
+  security_group_ids = var.security_group_ids
 }
 
 resource "alicloud_db_backup_policy" "this" {

@@ -1,15 +1,15 @@
 #db_database
 output "this_database_description" {
   description = "MySQL database description."
-  value      = concat(alicloud_db_database.this.*.description, [""])[0]
+  value       = alicloud_db_database.this.*.description
 }
 output "this_database_id" {
   description = "MySQL database id."
-  value       = concat(alicloud_db_database.this.*.id, [""])[0]
+  value       = alicloud_db_database.this.*.id
 }
 output "this_database_name" {
   description = "MySQL database name."
-  value       = concat(alicloud_db_database.this.*.name, [""])[0]
+  value       = alicloud_db_database.this.*.name
 }
 output "this_database_account" {
   description = "MySQL database account."

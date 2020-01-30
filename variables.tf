@@ -32,11 +32,7 @@ variable "cms_name" {
   type        = string
   default     = ""
 }
-variable "project" {
-  description = " Monitor project name,use 'acs_rds_dashboard'. "
-  type        = string
-  default     = "acs_rds_dashboard"
-}
+
 variable "metric" {
   description = "Name of the monitoring metrics corresponding to a project, such as 'CPUUtilization' and 'networkin_rate'. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm). "
   type        = string
@@ -116,9 +112,9 @@ variable "engine_version" {
 }
 
 variable "instance_name" {
-  description = "The name of MySQL Instance. A random name prefixed with 'terraform-rds-' will be set if it is empty."
+  description = "The name of MySQL Instance."
   type        = string
-  default     = ""
+  default     = "tf-rds-instance-for-mysql"
 }
 variable "instance_charge_type" {
   description = "The instance charge type. Valid values: Prepaid and Postpaid. Default to Postpaid."
@@ -207,9 +203,9 @@ variable "allocate_public_connection" {
   default     = false
 }
 variable "connection_prefix" {
-  description = "Prefix of an Internet connection string. A random name prefixed with 'tf-rds-' will be set if it is empty."
+  description = "Prefix of an Internet connection string."
   type        = string
-  default     = ""
+  default     = "tf-mysql"
 }
 
 variable "port" {
@@ -258,11 +254,5 @@ variable "privilege" {
   description = "The privilege of one account access database."
   type        = string
   default     = "ReadOnly"
-}
-
-variable "db_instance_id" {
-  description = "The Id of instance in which database belongs."
-  type        = string
-  default     = ""
 }
 
