@@ -23,6 +23,7 @@ module "mysql" {
   #################
   # Rds Instance
   #################
+  create_instance      = var.create_instance
   engine_version       = local.engine_version
   instance_type        = var.instance_type != "" ? var.instance_type : data.alicloud_db_instance_classes.default.instance_classes.0.instance_class
   instance_storage     = var.instance_storage != "" ? var.instance_storage : lookup(data.alicloud_db_instance_classes.default.instance_classes.0.storage_range, "min")
@@ -69,4 +70,5 @@ module "mysql" {
   threshold       = var.threshold
   triggered_count = var.triggered_count
   contact_groups  = var.contact_groups
+  enabled         = var.enabled
 }

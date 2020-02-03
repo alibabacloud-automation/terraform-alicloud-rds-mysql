@@ -71,6 +71,7 @@ resource "alicloud_db_connection" "db_connection" {
 
 resource "alicloud_cms_alarm" "cpu_usage" {
   count   = local.create_more_resources ? 1 : 0
+  enabled = var.enabled
   name    = var.cms_name
   project = local.project
   metric  = "CpuUsage"
@@ -87,6 +88,7 @@ resource "alicloud_cms_alarm" "cpu_usage" {
 }
 resource "alicloud_cms_alarm" "disk_usage" {
   count   = local.create_more_resources ? 1 : 0
+  enabled = var.enabled
   name    = var.cms_name
   project = local.project
   metric  = "DiskUsage"
@@ -103,6 +105,7 @@ resource "alicloud_cms_alarm" "disk_usage" {
 }
 resource "alicloud_cms_alarm" "memory_usage" {
   count   = local.create_more_resources ? 1 : 0
+  enabled = var.enabled
   name    = var.cms_name
   project = local.project
   metric  = "MemoryUsage"
@@ -119,6 +122,7 @@ resource "alicloud_cms_alarm" "memory_usage" {
 }
 resource "alicloud_cms_alarm" "network_in_new" {
   count   = local.create_more_resources ? 1 : 0
+  enabled = var.enabled
   name    = var.cms_name
   project = local.project
   metric  = "MySQL_NetworkInNew"
@@ -135,6 +139,7 @@ resource "alicloud_cms_alarm" "network_in_new" {
 }
 resource "alicloud_cms_alarm" "network_out_new" {
   count   = local.create_more_resources ? 1 : 0
+  enabled = var.enabled
   name    = var.cms_name
   project = local.project
   metric  = "MySQL_NetworkOutNew"
