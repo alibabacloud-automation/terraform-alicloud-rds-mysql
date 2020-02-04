@@ -1,4 +1,10 @@
-## 1.1.0 (Unreleased)
+## 1.2.0 (Unreleased)
+## 1.1.0 (February 1, 2020)
+
+IMPROVEMENTS:
+
+- Add judgment creation field in sub module [GH-5]( https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/5)
+
 ## 1.0.1 (January 30, 2020)
 
 IMPROVEMENTS:
