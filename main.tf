@@ -12,6 +12,7 @@ locals {
   create_more_resources = var.existing_instance_id != "" || var.create_instance ? true : false
   create_account        = local.create_more_resources && var.create_account
   create_database       = local.create_more_resources && var.create_database
+  create_backup_policy  = local.create_more_resources && var.create_backup_policy
   project               = "acs_rds_dashboard"
 }
 module "databases" {
@@ -52,7 +53,7 @@ resource "alicloud_db_instance" "this" {
 }
 
 resource "alicloud_db_backup_policy" "this" {
-  count                       = local.create_more_resources ? 1 : 0
+  count                       = local.create_backup_policy ? 1 : 0
   instance_id                 = local.this_instance_id
   backup_retention_period     = var.log_backup_retention_period
   preferred_backup_time       = var.preferred_backup_time
