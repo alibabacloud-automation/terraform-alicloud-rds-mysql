@@ -1,3 +1,20 @@
+data "alicloud_db_instances" "this" {
+  ids = var.existing_instance_id != "" ? [var.existing_instance_id] : null
+}
+
+locals {
+  this_db_instance_engine            = var.existing_instance_id != "" ? concat(data.alicloud_db_instances.this.instances.*.engine, [""])[0] : concat(alicloud_db_instance.this.*.engine, [""])[0]
+  this_db_instance_engine_version    = var.existing_instance_id != "" ? concat(data.alicloud_db_instances.this.instances.*.engine_version, [""])[0] : concat(alicloud_db_instance.this.*.engine_version, [""])[0]
+  this_db_instance_type              = var.existing_instance_id != "" ? concat(data.alicloud_db_instances.this.instances.*.instance_type, [""])[0] : concat(alicloud_db_instance.this.*.instance_type, [""])[0]
+  this_db_instance_storage           = var.existing_instance_id != "" ? concat(data.alicloud_db_instances.this.instances.*.instance_storage, [0])[0] : concat(alicloud_db_instance.this.*.instance_storage, [""])[0]
+  this_db_instance_charge_type       = var.existing_instance_id != "" ? concat(data.alicloud_db_instances.this.instances.*.charge_type, [""])[0] : concat(alicloud_db_instance.this.*.instance_charge_type, [""])[0]
+  this_db_instance_name              = var.existing_instance_id != "" ? concat(data.alicloud_db_instances.this.instances.*.name, [""])[0] : concat(alicloud_db_instance.this.*.instance_name, [""])[0]
+  this_db_instance_zone_id           = var.existing_instance_id != "" ? concat(data.alicloud_db_instances.this.instances.*.availability_zone, [""])[0] : concat(alicloud_db_instance.this.*.zone_id, [""])[0]
+  this_db_instance_vswitch_id        = var.existing_instance_id != "" ? concat(data.alicloud_db_instances.this.instances.*.vswitch_id, [""])[0] : concat(alicloud_db_instance.this.*.vswitch_id, [""])[0]
+  this_db_instance_connection_string = var.existing_instance_id != "" ? concat(data.alicloud_db_instances.this.instances.*.connection_string, [""])[0] : concat(alicloud_db_instance.this.*.connection_string, [""])[0]
+  this_db_instance_port              = var.existing_instance_id != "" ? concat(data.alicloud_db_instances.this.instances.*.connection_string, [""])[0] : concat(alicloud_db_instance.this.*.port, [""])[0]
+}
+
 ############
 # cms alarm
 ############
@@ -91,27 +108,27 @@ output "this_db_instance_id" {
 }
 output "this_db_instance_engine" {
   description = "MySQL instance engine."
-  value       = concat(alicloud_db_instance.this.*.engine, [""])[0]
+  value       = local.this_db_instance_engine
 }
 output "this_db_instance_engine_version" {
   description = "MySQL instance engine version."
-  value       = concat(alicloud_db_instance.this.*.engine_version, [""])[0]
+  value       = local.this_db_instance_engine_version
 }
 output "this_db_instance_type" {
   description = "MySQL instance type."
-  value       = concat(alicloud_db_instance.this.*.instance_type, [""])[0]
+  value       = local.this_db_instance_type
 }
 output "this_db_instance_storage" {
   description = "MySQL instance storage."
-  value       = concat(alicloud_db_instance.this.*.instance_storage, [""])[0]
+  value       = local.this_db_instance_storage
 }
 output "this_db_instance_charge_type" {
   description = "MySQL instance charge type."
-  value       = concat(alicloud_db_instance.this.*.instance_charge_type, [""])[0]
+  value       = local.this_db_instance_charge_type
 }
 output "this_db_instance_name" {
   description = "MySQL instance name."
-  value       = concat(alicloud_db_instance.this.*.instance_name, [""])[0]
+  value       = local.this_db_instance_name
 }
 output "this_db_instance_period" {
   description = "MySQL instance charge period when Prepaid."
@@ -123,11 +140,11 @@ output "this_db_instance_security_ips" {
 }
 output "this_db_instance_zone_id" {
   description = "The zone id in which the Rds instance."
-  value       = concat(alicloud_db_instance.this.*.zone_id, [""])[0]
+  value       = local.this_db_instance_zone_id
 }
 output "this_db_instance_vswitch_id" {
   description = "The vswitch id in which the Rds instance."
-  value       = concat(alicloud_db_instance.this.*.vswitch_id, [""])[0]
+  value       = local.this_db_instance_vswitch_id
 }
 output "this_db_instance_security_group_ids" {
   description = "The security group ids in which the Rds instance."
@@ -144,11 +161,11 @@ output "this_db_instance_tags" {
 
 output "this_db_instance_connection_string" {
   description = "MySQL instance public connection string"
-  value       = concat(alicloud_db_instance.this.*.connection_string, [""])[0]
+  value       = local.this_db_instance_connection_string
 }
 output "this_db_instance_port" {
   description = "MySQL instance public connection string"
-  value       = concat(alicloud_db_instance.this.*.port, [""])[0]
+  value       = local.this_db_instance_port
 }
 output "this_db_instance_connection_ip_address" {
   description = "MySQL instance public connection string's ip address"

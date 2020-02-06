@@ -22,6 +22,7 @@ module "mysql" {
   #################
   # Rds Instance
   #################
+  existing_instance_id = var.existing_instance_id
   create_instance      = var.create_instance
   engine_version       = local.engine_version
   instance_type        = var.instance_type != "" ? var.instance_type : data.alicloud_db_instance_classes.default.instance_classes.0.instance_class
