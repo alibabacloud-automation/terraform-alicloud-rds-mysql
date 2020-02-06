@@ -1,5 +1,4 @@
 provider "alicloud" {
-  version                 = ">=1.64.0"
   profile                 = var.profile != "" ? var.profile : null
   shared_credentials_file = var.shared_credentials_file != "" ? var.shared_credentials_file : null
   region                  = var.region != "" ? var.region : null
@@ -70,8 +69,8 @@ resource "alicloud_db_connection" "db_connection" {
 }
 
 resource "alicloud_cms_alarm" "cpu_usage" {
-  count   = local.create_more_resources ? 1 : 0
-  enabled = var.enabled
+  count   = local.create_more_resources && var.enable_alarm_rule ? 1 : 0
+  enabled = var.enable_alarm_rule
   name    = var.cms_name
   project = local.project
   metric  = "CpuUsage"
@@ -85,10 +84,11 @@ resource "alicloud_cms_alarm" "cpu_usage" {
   threshold       = var.threshold
   triggered_count = var.triggered_count
   contact_groups  = var.contact_groups
+  silence_time    = var.alarm_rule_silence_time
 }
 resource "alicloud_cms_alarm" "disk_usage" {
-  count   = local.create_more_resources ? 1 : 0
-  enabled = var.enabled
+  count   = local.create_more_resources && var.enable_alarm_rule ? 1 : 0
+  enabled = var.enable_alarm_rule
   name    = var.cms_name
   project = local.project
   metric  = "DiskUsage"
@@ -102,10 +102,11 @@ resource "alicloud_cms_alarm" "disk_usage" {
   threshold       = var.threshold
   triggered_count = var.triggered_count
   contact_groups  = var.contact_groups
+  silence_time    = var.alarm_rule_silence_time
 }
 resource "alicloud_cms_alarm" "memory_usage" {
-  count   = local.create_more_resources ? 1 : 0
-  enabled = var.enabled
+  count   = local.create_more_resources && var.enable_alarm_rule ? 1 : 0
+  enabled = var.enable_alarm_rule
   name    = var.cms_name
   project = local.project
   metric  = "MemoryUsage"
@@ -119,10 +120,11 @@ resource "alicloud_cms_alarm" "memory_usage" {
   threshold       = var.threshold
   triggered_count = var.triggered_count
   contact_groups  = var.contact_groups
+  silence_time    = var.alarm_rule_silence_time
 }
 resource "alicloud_cms_alarm" "network_in_new" {
-  count   = local.create_more_resources ? 1 : 0
-  enabled = var.enabled
+  count   = local.create_more_resources && var.enable_alarm_rule ? 1 : 0
+  enabled = var.enable_alarm_rule
   name    = var.cms_name
   project = local.project
   metric  = "MySQL_NetworkInNew"
@@ -138,8 +140,8 @@ resource "alicloud_cms_alarm" "network_in_new" {
   contact_groups  = var.contact_groups
 }
 resource "alicloud_cms_alarm" "network_out_new" {
-  count   = local.create_more_resources ? 1 : 0
-  enabled = var.enabled
+  count   = local.create_more_resources && var.enable_alarm_rule ? 1 : 0
+  enabled = var.enable_alarm_rule
   name    = var.cms_name
   project = local.project
   metric  = "MySQL_NetworkOutNew"
@@ -153,6 +155,7 @@ resource "alicloud_cms_alarm" "network_out_new" {
   threshold       = var.threshold
   triggered_count = var.triggered_count
   contact_groups  = var.contact_groups
+  silence_time    = var.alarm_rule_silence_time
 }
 
 

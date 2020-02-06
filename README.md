@@ -17,7 +17,7 @@ These types of resources are supported:
 
 ## Terraform versions
 
-This module requires Terraform 0.12.
+This module requires Terraform 0.12 and Terraform Provider Alicloud 1.56.0+.
 
 ## Usage
 

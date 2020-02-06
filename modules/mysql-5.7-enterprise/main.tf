@@ -1,6 +1,4 @@
-
 provider "alicloud" {
-  version                 = ">=1.64.0"
   profile                 = var.profile != "" ? var.profile : null
   shared_credentials_file = var.shared_credentials_file != "" ? var.shared_credentials_file : null
   region                  = var.region != "" ? var.region : null
@@ -50,11 +48,11 @@ module "mysql" {
   #################
   # Rds Database account
   #################
-  type           = var.type
-  privilege      = var.privilege
-  create_account = var.create_account
-  account_name   = var.account_name
-  password       = var.password
+  account_type      = var.type
+  account_privilege = var.privilege
+  create_account    = var.create_account
+  account_name      = var.account_name
+  account_password  = var.password
   #################
   # Rds Database
   #################
@@ -63,12 +61,12 @@ module "mysql" {
   #############
   # cms_alarm
   #############
-  cms_name        = var.cms_name
-  statistics      = var.statistics
-  cms_period      = var.cms_period
-  operator        = var.operator
-  threshold       = var.threshold
-  triggered_count = var.triggered_count
-  contact_groups  = var.contact_groups
-  enabled         = var.enabled
+  alarm_rule_name            = var.cms_name
+  alarm_rule_statistics      = var.statistics
+  alarm_rule_period          = var.cms_period
+  alarm_rule_operator        = var.operator
+  alarm_rule_threshold       = var.threshold
+  alarm_rule_triggered_count = var.triggered_count
+  alarm_rule_contact_groups  = var.contact_groups
+  enable_alarm_rule          = var.enabled
 }

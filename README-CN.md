@@ -14,7 +14,7 @@ terraform-alicloud-rds-mysql
 
 ## Terraform 版本
 
-本模板要求使用版本 Terraform 0.12。
+本模板要求使用版本 Terraform 0.12 和阿里云 Provider 1.56.0+。
 
 ## 用法
 
