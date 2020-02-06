@@ -1,83 +1,83 @@
 ############
 # cms alarm
 ############
-output "this_cms_alarm_id" {
+output "this_alarm_rule_id" {
   description = "The ID of the alarm rule. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.id, [""])[0]
 }
-output "this_cms_alarm_name" {
+output "this_alarm_rule_name" {
   description = "The alarm name. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.name, [""])[0]
 }
-output "this_cms_alarm_project" {
+output "this_alarm_rule_project" {
   description = "Monitor project name. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.project, [""])[0]
 }
-output "this_cms_alarm_metric" {
+output "this_alarm_rule_metric" {
   description = "Name of the monitoring metrics. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.metric, [""])[0]
 }
-output "this_cms_alarm_dimensions" {
+output "this_alarm_rule_dimensions" {
   description = "Map of the resources associated with the alarm rule. "
   value       = alicloud_cms_alarm.cpu_usage.*.dimensions
 }
-output "this_cms_alarm_period" {
+output "this_alarm_rule_period" {
   description = "Index query cycle. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.period, [""])[0]
 }
-output "this_cms_alarm_statistics" {
+output "this_alarm_rule_statistics" {
   description = "Statistical method. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.statistics, [""])[0]
 }
-output "this_cms_alarm_operator" {
+output "this_alarm_rule_operator" {
   description = "Alarm comparison operator. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.operator, [""])[0]
 }
-output "this_cms_alarm_threshold" {
+output "this_alarm_rule_threshold" {
   description = "Alarm threshold value."
   value       = concat(alicloud_cms_alarm.cpu_usage.*.threshold, [""])[0]
 }
-output "this_cms_alarm_triggered_count" {
+output "this_alarm_rule_triggered_count" {
   description = "Number of trigger alarm. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.triggered_count, [""])[0]
 }
-output "this_cms_alarm_contact_groups" {
+output "this_alarm_rule_contact_groups" {
   description = "List contact groups of the alarm rule. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.contact_groups, [""])[0]
 }
-output "this_cms_alarm_silence_time" {
+output "this_alarm_rule_silence_time" {
   description = " Notification silence period in the alarm state. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.silence_time, [""])[0]
 }
-output "this_cms_alarm_notify_type" {
+output "this_alarm_rule_notify_type" {
   description = "Notification type. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.notify_type, [""])[0]
 }
-output "this_cms_alarm_enabled" {
+output "this_alarm_rule_enabled" {
   description = "Whether to enable alarm rule. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.enabled, [""])[0]
 }
-output "this_cms_alarm_webhook" {
+output "this_alarm_rule_webhook" {
   description = "The webhook that is called when the alarm is triggered. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.webhook, [""])[0]
 }
-output "this_cms_alarm_cpu_usage_status" {
+output "this_alarm_rule_cpu_usage_status" {
   description = "The current alarm cpu usage rule status. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.status, [""])[0]
 }
-output "this_cms_alarm_disk_usage_status" {
+output "this_alarm_rule_disk_usage_status" {
   description = "The current alarm disk usage rule status. "
   value       = concat(alicloud_cms_alarm.disk_usage.*.status, [""])[0]
 }
-output "this_cms_alarm_memory_usage_status" {
+output "this_alarm_rule_memory_usage_status" {
   description = "The current alarm memory usage rule status. "
   value       = concat(alicloud_cms_alarm.memory_usage.*.status, [""])[0]
 }
-output "this_cms_alarm_network_in_new_status" {
+output "this_alarm_rule_network_in_new_status" {
   description = "The current alarm network in new rule status. "
   value       = concat(alicloud_cms_alarm.network_in_new.*.status, [""])[0]
 }
-output "this_cms_alarm_network_out_new_status" {
+output "this_alarm_rule_network_out_new_status" {
   description = "The current alarm network out new rule status. "
   value       = concat(alicloud_cms_alarm.network_out_new.*.status, [""])[0]
 }
