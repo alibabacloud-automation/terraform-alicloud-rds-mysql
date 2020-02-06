@@ -40,7 +40,7 @@ resource "alicloud_db_instance" "this" {
   instance_charge_type = var.instance_charge_type
   instance_name        = var.instance_name
   period               = var.period
-  security_ips         = var.security_ips
+  security_ips         = length(var.security_ips) > 0 ? var.security_ips : null
   vswitch_id           = var.vswitch_id
   tags = merge(
     {
