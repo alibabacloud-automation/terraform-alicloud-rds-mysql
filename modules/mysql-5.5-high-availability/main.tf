@@ -50,11 +50,11 @@ module "mysql" {
   #################
   # Rds Database account
   #################
-  type           = var.type
-  privilege      = var.privilege
-  create_account = var.create_account
-  account_name   = var.account_name
-  password       = var.password
+  account_type      = var.account_type
+  account_privilege = var.account_privilege
+  create_account    = var.create_account
+  account_name      = var.account_name
+  account_password  = var.account_password
   #################
   # Rds Database
   #################
@@ -63,12 +63,12 @@ module "mysql" {
   #############
   # cms_alarm
   #############
-  cms_name        = var.cms_name
-  statistics      = var.statistics
-  cms_period      = var.cms_period
-  operator        = var.operator
-  threshold       = var.threshold
-  triggered_count = var.triggered_count
-  contact_groups  = var.contact_groups
-  enabled         = var.enabled
+  alarm_rule_name            = var.alarm_rule_name
+  enable_alarm_rule          = var.enable_alarm_rule
+  alarm_rule_statistics      = var.alarm_rule_statistics
+  alarm_rule_period          = var.alarm_rule_period
+  alarm_rule_operator        = var.alarm_rule_operator
+  alarm_rule_threshold       = var.alarm_rule_threshold
+  alarm_rule_triggered_count = var.alarm_rule_triggered_count
+  alarm_rule_contact_groups  = var.alarm_rule_contact_groups
 }

@@ -1,4 +1,9 @@
 ## 1.2.0 (Unreleased)
+
+IMPROVEMENTS:
+
+- Modify some parameters [GH-8]
+
 ## 1.1.0 (February 1, 2020)
 
 IMPROVEMENTS:
