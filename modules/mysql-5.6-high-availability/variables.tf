@@ -167,6 +167,12 @@ variable "tags" {
 # MySQL Backup policy
 #################
 
+variable "create_backup_policy" {
+  description = "Whether to create backup policy."
+  type        = bool
+  default     = true
+}
+
 variable "preferred_backup_period" {
   description = "MySQL Instance backup period."
   type        = list(string)

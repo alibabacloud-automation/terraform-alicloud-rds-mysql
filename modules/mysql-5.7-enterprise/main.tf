@@ -39,6 +39,7 @@ module "mysql" {
   backup_retention_period     = var.backup_retention_period
   log_backup_retention_period = var.log_backup_retention_period
   enable_backup_log           = var.enable_backup_log
+  create_backup_policy        = var.create_backup_policy
   #################
   # Rds Connection
   #################
