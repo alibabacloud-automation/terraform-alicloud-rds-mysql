@@ -1,85 +1,85 @@
 ############
 # cms alarm
 ############
-output "this_cms_alarm_id" {
+output "this_alarm_rule_id" {
   description = "The ID of the alarm rule. "
-  value       = module.mysql.this_cms_alarm_id
+  value       = module.mysql.this_alarm_rule_id
 }
-output "this_cms_alarm_name" {
+output "this_alarm_rule_name" {
   description = "The alarm name. "
-  value       = module.mysql.this_cms_alarm_name
+  value       = module.mysql.this_alarm_rule_name
 }
-output "this_cms_alarm_project" {
+output "this_alarm_rule_project" {
   description = "Monitor project name. "
-  value       = module.mysql.this_cms_alarm_project
+  value       = module.mysql.this_alarm_rule_project
 }
-output "this_cms_alarm_metric" {
+output "this_alarm_rule_metric" {
   description = "Name of the monitoring metrics. "
-  value       = module.mysql.this_cms_alarm_metric
+  value       = module.mysql.this_alarm_rule_metric
 }
-output "this_cms_alarm_dimensions" {
+output "this_alarm_rule_dimensions" {
   description = "Map of the resources associated with the alarm rule. "
-  value       = module.mysql.this_cms_alarm_dimensions
+  value       = module.mysql.this_alarm_rule_dimensions
 }
-output "this_cms_alarm_period" {
+output "this_alarm_rule_period" {
   description = "Index query cycle. "
-  value       = module.mysql.this_cms_alarm_period
+  value       = module.mysql.this_alarm_rule_period
 }
-output "this_cms_alarm_statistics" {
+output "this_alarm_rule_statistics" {
   description = "Statistical method. "
-  value       = module.mysql.this_cms_alarm_statistics
+  value       = module.mysql.this_alarm_rule_statistics
 }
-output "this_cms_alarm_operator" {
+output "this_alarm_rule_operator" {
   description = "Alarm comparison operator. "
-  value       = module.mysql.this_cms_alarm_operator
+  value       = module.mysql.this_alarm_rule_operator
 }
-output "this_cms_alarm_threshold" {
+output "this_alarm_rule_threshold" {
   description = "Alarm threshold value."
-  value       = module.mysql.this_cms_alarm_threshold
+  value       = module.mysql.this_alarm_rule_threshold
 }
-output "this_cms_alarm_triggered_count" {
+output "this_alarm_rule_triggered_count" {
   description = "Number of trigger alarm. "
-  value       = module.mysql.this_cms_alarm_triggered_count
+  value       = module.mysql.this_alarm_rule_triggered_count
 }
-output "this_cms_alarm_contact_groups" {
+output "this_alarm_rule_contact_groups" {
   description = "List contact groups of the alarm rule. "
-  value       = module.mysql.this_cms_alarm_contact_groups
+  value       = module.mysql.this_alarm_rule_contact_groups
 }
-output "this_cms_alarm_silence_time" {
+output "this_alarm_rule_silence_time" {
   description = " Notification silence period in the alarm state. "
-  value       = module.mysql.this_cms_alarm_silence_time
+  value       = module.mysql.this_alarm_rule_silence_time
 }
-output "this_cms_alarm_notify_type" {
+output "this_alarm_rule_notify_type" {
   description = "Notification type. "
-  value       = module.mysql.this_cms_alarm_notify_type
+  value       = module.mysql.this_alarm_rule_notify_type
 }
-output "this_cms_alarm_enabled" {
+output "this_alarm_rule_enabled" {
   description = "Whether to enable alarm rule. "
-  value       = module.mysql.this_cms_alarm_enabled
+  value       = module.mysql.this_alarm_rule_enabled
 }
-output "this_cms_alarm_webhook" {
+output "this_alarm_rule_webhook" {
   description = "The webhook that is called when the alarm is triggered. "
-  value       = module.mysql.this_cms_alarm_webhook
+  value       = module.mysql.this_alarm_rule_webhook
 }
-output "this_cms_alarm_cpu_usage_status" {
+output "this_alarm_rule_cpu_usage_status" {
   description = "The current alarm cpu usage rule status. "
-  value       = module.mysql.this_cms_alarm_cpu_usage_status
+  value       = module.mysql.this_alarm_rule_cpu_usage_status
 }
-output "this_cms_alarm_disk_usage_status" {
+output "this_alarm_rule_disk_usage_status" {
   description = "The current alarm disk usage rule status. "
-  value       = module.mysql.this_cms_alarm_disk_usage_status
+  value       = module.mysql.this_alarm_rule_disk_usage_status
 }
-output "this_cms_alarm_memory_usage_status" {
+output "this_alarm_rule_memory_usage_status" {
   description = "The current alarm memory usage rule status. "
-  value       = module.mysql.this_cms_alarm_memory_usage_status
+  value       = module.mysql.this_alarm_rule_memory_usage_status
 }
-output "this_cms_alarm_network_in_new_status" {
+output "this_alarm_rule_network_in_new_status" {
   description = "The current alarm network in new rule status. "
-  value       = module.mysql.this_cms_alarm_network_in_new_status
+  value       = module.mysql.this_alarm_rule_network_in_new_status
 }
-output "this_cms_alarm_network_out_new_status" {
+output "this_alarm_rule_network_out_new_status" {
   description = "The current alarm network out new rule status. "
-  value       = module.mysql.this_cms_alarm_network_out_new_status
+  value       = module.mysql.this_alarm_rule_network_out_new_status
 }
 
 #################
