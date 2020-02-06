@@ -42,7 +42,7 @@ module "mysql" {
   ###########
   #databases#
   ###########
-  privilege = "ReadWrite"
+  account_privilege = "ReadWrite"
   databases = [
     {
       name          = "dbuserv1"
@@ -58,8 +58,8 @@ module "mysql" {
   #################
   # Rds Database account
   #################
-  account_name = "account_name1"
-  password     = "yourpassword123"
+  account_name     = "account_name1"
+  account_password = "yourpassword123"
   tags = {
     Env      = "Private"
     Location = "Secret"
@@ -67,11 +67,11 @@ module "mysql" {
   #############
   # cms_alarm
   #############
-  cms_name        = "CmsAlarmForMysql"
-  statistics      = "Average"
-  cms_period      = 300
-  operator        = "<="
-  threshold       = 35
-  triggered_count = 2
-  contact_groups  = ["MySQL", "AccCms"]
+  alarm_rule_name            = "CmsAlarmForMysql"
+  alarm_rule_statistics      = "Average"
+  alarm_rule_period          = 300
+  alarm_rule_operator        = "<="
+  alarm_rule_threshold       = 35
+  alarm_rule_triggered_count = 2
+  alarm_rule_contact_groups  = ["MySQL", "AccCms"]
 }

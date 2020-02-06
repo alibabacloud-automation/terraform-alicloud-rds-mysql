@@ -63,10 +63,10 @@ module "mysql" {
   #databases#
   ###########
 
-  account_name = "account_name1"
-  password     = "1234abc"
-  type         = "Normal"
-  privilege    = "ReadWrite"
+  account_name         = "account_name1"
+  account_password     = "1234abc"
+  account_type         = "Normal"
+  account_privilege    = "ReadWrite"
   databases = [
     {
       name          = "dbuserv1"
@@ -84,14 +84,13 @@ module "mysql" {
   # cms_alarm
   #############
 
-  cms_name        = "CmsAlarmForMysql"
-  project         = "acs_rds_dashboard"
-  statistics      = "Average"
-  cms_period      = 300
-  operator        = "<="
-  threshold       = 35
-  triggered_count = 2
-  contact_groups  = ["MySQL", "AccCms"]
+ alarm_rule_name            = "CmsAlarmForMysql"
+   alarm_rule_statistics      = "Average"
+   alarm_rule_period          = 300
+   alarm_rule_operator        = "<="
+   alarm_rule_threshold       = 35
+   alarm_rule_triggered_count = 2
+   alarm_rule_contact_groups  = ["MySQL", "AccCms"]
 }
 ```
 

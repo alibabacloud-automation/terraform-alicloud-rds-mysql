@@ -26,7 +26,7 @@ variable "skip_region_validation" {
 # cms_alarm
 #############
 
-variable "cms_name" {
+variable "alarm_rule_name" {
   description = "The alarm rule name. "
   type        = string
   default     = ""
@@ -36,7 +36,7 @@ variable "metric" {
   type        = string
   default     = ""
 }
-variable "cms_period" {
+variable "alarm_rule_period" {
   description = "Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds. "
   type        = number
   default     = 300
@@ -46,37 +46,37 @@ variable "dimensions" {
   type        = map(string)
   default     = {}
 }
-variable "statistics" {
+variable "alarm_rule_statistics" {
   description = "Statistical method. It must be consistent with that defined for metrics. Valid values: ['Average', 'Minimum', 'Maximum']. Default to 'Average'. "
   type        = string
   default     = "Average"
 }
-variable "operator" {
+variable "alarm_rule_operator" {
   description = "Alarm comparison operator. Valid values: ['<=', '<', '>', '>=', '==', '!=']. Default to '=='. "
   type        = string
   default     = "=="
 }
-variable "threshold" {
+variable "alarm_rule_threshold" {
   description = "Alarm threshold value, which must be a numeric value currently. "
   type        = string
   default     = ""
 }
-variable "triggered_count" {
+variable "alarm_rule_triggered_count" {
   description = "Number of consecutive times it has been detected that the values exceed the threshold. Default to 3. "
   type        = number
   default     = 3
 }
-variable "contact_groups" {
+variable "alarm_rule_contact_groups" {
   description = "List contact groups of the alarm rule, which must have been created on the console. "
   type        = list(string)
   default     = []
 }
-variable "silence_time" {
+variable "alarm_rule_silence_time" {
   description = "Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400. "
   type        = number
   default     = 86400
 }
-variable "enabled" {
+variable "enable_alarm_rule" {
   description = "Whether to enable alarm rule. Default to true. "
   type        = bool
   default     = true
@@ -244,17 +244,17 @@ variable "account_name" {
   type        = string
   default     = ""
 }
-variable "password" {
+variable "account_password" {
   description = "Operation database account password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters."
   type        = string
   default     = ""
 }
-variable "type" {
+variable "account_type" {
   description = "Privilege type of account. Normal: Common privilege. Super: High privilege. Default to Normal."
   type        = string
   default     = "Normal"
 }
-variable "privilege" {
+variable "account_privilege" {
   description = "The privilege of one account access database."
   type        = string
   default     = "ReadOnly"
