@@ -18,6 +18,10 @@ locals {
 ############
 # cms alarm
 ############
+output "this_alarm_rule_effective_interval" {
+  description = "The interval of effecting alarm rule. "
+  value       = concat(alicloud_cms_alarm.cpu_usage.*.effective_interval, [""])[0]
+}
 output "this_alarm_rule_id" {
   description = "The ID of the alarm rule. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.id, [""])[0]
@@ -78,10 +82,7 @@ output "this_alarm_rule_webhook" {
   description = "The webhook that is called when the alarm is triggered. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.webhook, [""])[0]
 }
-output "this_alarm_rule_effective_interval" {
-  description = "The current alarm network out new rule status. "
-  value       = concat(alicloud_cms_alarm.cpu_usage.*.effective_interval, [""])[0]
-}
+
 output "this_alarm_rule_cpu_usage_status" {
   description = "The current alarm cpu usage rule status. "
   value       = concat(alicloud_cms_alarm.cpu_usage.*.status, [""])[0]

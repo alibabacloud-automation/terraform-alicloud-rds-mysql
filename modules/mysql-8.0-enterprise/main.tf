@@ -63,12 +63,14 @@ module "mysql" {
   #############
   # cms_alarm
   #############
-  alarm_rule_name            = var.alarm_rule_name
-  alarm_rule_statistics      = var.alarm_rule_statistics
-  alarm_rule_period          = var.alarm_rule_period
-  alarm_rule_operator        = var.alarm_rule_operator
-  alarm_rule_threshold       = var.alarm_rule_threshold
-  alarm_rule_triggered_count = var.alarm_rule_triggered_count
-  alarm_rule_contact_groups  = var.alarm_rule_contact_groups
-  enable_alarm_rule          = var.enable_alarm_rule
+  alarm_rule_name               = var.alarm_rule_name
+  alarm_rule_statistics         = var.alarm_rule_statistics
+  alarm_rule_period             = var.alarm_rule_period
+  alarm_rule_operator           = var.alarm_rule_operator
+  alarm_rule_threshold          = var.alarm_rule_threshold
+  alarm_rule_triggered_count    = var.alarm_rule_triggered_count
+  alarm_rule_contact_groups     = var.alarm_rule_contact_groups
+  enable_alarm_rule             = var.enable_alarm_rule
+  alarm_rule_silence_time       = var.alarm_rule_silence_time
+  alarm_rule_effective_interval = var.alarm_rule_effective_interval
 }

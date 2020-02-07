@@ -1,6 +1,10 @@
 ############
 # cms alarm
 ############
+output "this_alarm_rule_effective_interval" {
+  description = "The interval of effecting alarm rule. "
+  value       = module.mysql.this_alarm_rule_effective_interval
+}
 output "this_alarm_rule_id" {
   description = "The ID of the alarm rule. "
   value       = module.mysql.this_alarm_rule_id

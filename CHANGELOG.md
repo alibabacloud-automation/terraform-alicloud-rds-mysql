@@ -2,6 +2,7 @@
 
 IMPROVEMENTS:
 
+- add alarm_rule_effective_interval in submodoule and example [GH-17]( https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/17)
 - add new parameter alarm_rule_effective_interval [GH-16]( https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/16)
 - Create a new example to distinguish existing instance [GH-15]( https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/15)
 - improve outputs when setting existing_instance_id [GH-14]( https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/14)
