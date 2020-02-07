@@ -72,6 +72,11 @@ variable "alarm_rule_silence_time" {
   type        = number
   default     = 86400
 }
+variable "alarm_rule_effective_interval" {
+  description = "The interval of effecting alarm rule. It foramt as 'hh:mm-hh:mm', like '0:00-4:00'."
+  type        = "string"
+  default     = "0:00-2:00"
+}
 
 #################
 # Mysql Instance

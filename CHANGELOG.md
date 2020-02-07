@@ -2,9 +2,16 @@
 
 IMPROVEMENTS:
 
-- Modify some parameters [GH-8]
-- Modify outputs.tf [GH-9]
-- Create a new example to distinguish existing instance [GH-15]
+- add new parameter alarm_rule_effective_interval [GH-16]( https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/16)
+- Create a new example to distinguish existing instance [GH-15]( https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/15)
+- improve outputs when setting existing_instance_id [GH-14]( https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/14)
+- fix security_ips diff bug [GH-13]( https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/13)
+- Add varibale create_backup_policy [GH-12]( https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/12)
+- add create_backup_policy [GH-11]( https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/11)
+- Delete version in provider [GH-10]( https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/10)
+- Modify rds-mysql module outputs.tf [GH-9]( https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/9)
+- Modify parameters [GH-8]( https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/8)
+- improve cms parameters name [GH-7]( https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/7)
 
 ## 1.1.0 (February 1, 2020)
 

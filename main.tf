@@ -79,13 +79,14 @@ resource "alicloud_cms_alarm" "cpu_usage" {
     instanceId = local.this_instance_id
     device     = "/dev/vda1,/dev/vdb1"
   }
-  statistics      = var.alarm_rule_statistics
-  period          = var.alarm_rule_period
-  operator        = var.alarm_rule_operator
-  threshold       = var.alarm_rule_threshold
-  triggered_count = var.alarm_rule_triggered_count
-  contact_groups  = var.alarm_rule_contact_groups
-  silence_time    = var.alarm_rule_silence_time
+  statistics         = var.alarm_rule_statistics
+  period             = var.alarm_rule_period
+  operator           = var.alarm_rule_operator
+  threshold          = var.alarm_rule_threshold
+  triggered_count    = var.alarm_rule_triggered_count
+  contact_groups     = var.alarm_rule_contact_groups
+  silence_time       = var.alarm_rule_silence_time
+  effective_interval = var.alarm_rule_effective_interval
 }
 resource "alicloud_cms_alarm" "disk_usage" {
   count   = local.create_more_resources && var.enable_alarm_rule ? 1 : 0
@@ -97,13 +98,14 @@ resource "alicloud_cms_alarm" "disk_usage" {
     instanceId = local.this_instance_id
     device     = "/dev/vda1,/dev/vdb1"
   }
-  statistics      = var.alarm_rule_statistics
-  period          = var.alarm_rule_period
-  operator        = var.alarm_rule_operator
-  threshold       = var.alarm_rule_threshold
-  triggered_count = var.alarm_rule_triggered_count
-  contact_groups  = var.alarm_rule_contact_groups
-  silence_time    = var.alarm_rule_silence_time
+  statistics         = var.alarm_rule_statistics
+  period             = var.alarm_rule_period
+  operator           = var.alarm_rule_operator
+  threshold          = var.alarm_rule_threshold
+  triggered_count    = var.alarm_rule_triggered_count
+  contact_groups     = var.alarm_rule_contact_groups
+  silence_time       = var.alarm_rule_silence_time
+  effective_interval = var.alarm_rule_effective_interval
 }
 resource "alicloud_cms_alarm" "memory_usage" {
   count   = local.create_more_resources && var.enable_alarm_rule ? 1 : 0
@@ -115,13 +117,14 @@ resource "alicloud_cms_alarm" "memory_usage" {
     instanceId = local.this_instance_id
     device     = "/dev/vda1,/dev/vdb1"
   }
-  statistics      = var.alarm_rule_statistics
-  period          = var.alarm_rule_period
-  operator        = var.alarm_rule_operator
-  threshold       = var.alarm_rule_threshold
-  triggered_count = var.alarm_rule_triggered_count
-  contact_groups  = var.alarm_rule_contact_groups
-  silence_time    = var.alarm_rule_silence_time
+  statistics         = var.alarm_rule_statistics
+  period             = var.alarm_rule_period
+  operator           = var.alarm_rule_operator
+  threshold          = var.alarm_rule_threshold
+  triggered_count    = var.alarm_rule_triggered_count
+  contact_groups     = var.alarm_rule_contact_groups
+  silence_time       = var.alarm_rule_silence_time
+  effective_interval = var.alarm_rule_effective_interval
 }
 resource "alicloud_cms_alarm" "network_in_new" {
   count   = local.create_more_resources && var.enable_alarm_rule ? 1 : 0
@@ -133,12 +136,13 @@ resource "alicloud_cms_alarm" "network_in_new" {
     instanceId = local.this_instance_id
     device     = "/dev/vda1,/dev/vdb1"
   }
-  statistics      = var.alarm_rule_statistics
-  period          = var.alarm_rule_period
-  operator        = var.alarm_rule_operator
-  threshold       = var.alarm_rule_threshold
-  triggered_count = var.alarm_rule_triggered_count
-  contact_groups  = var.alarm_rule_contact_groups
+  statistics         = var.alarm_rule_statistics
+  period             = var.alarm_rule_period
+  operator           = var.alarm_rule_operator
+  threshold          = var.alarm_rule_threshold
+  triggered_count    = var.alarm_rule_triggered_count
+  contact_groups     = var.alarm_rule_contact_groups
+  effective_interval = var.alarm_rule_effective_interval
 }
 resource "alicloud_cms_alarm" "network_out_new" {
   count   = local.create_more_resources && var.enable_alarm_rule ? 1 : 0
@@ -150,13 +154,14 @@ resource "alicloud_cms_alarm" "network_out_new" {
     instanceId = local.this_instance_id
     device     = "/dev/vda1,/dev/vdb1"
   }
-  statistics      = var.alarm_rule_statistics
-  period          = var.alarm_rule_period
-  operator        = var.alarm_rule_operator
-  threshold       = var.alarm_rule_threshold
-  triggered_count = var.alarm_rule_triggered_count
-  contact_groups  = var.alarm_rule_contact_groups
-  silence_time    = var.alarm_rule_silence_time
+  statistics         = var.alarm_rule_statistics
+  period             = var.alarm_rule_period
+  operator           = var.alarm_rule_operator
+  threshold          = var.alarm_rule_threshold
+  triggered_count    = var.alarm_rule_triggered_count
+  contact_groups     = var.alarm_rule_contact_groups
+  silence_time       = var.alarm_rule_silence_time
+  effective_interval = var.alarm_rule_effective_interval
 }
 
 
