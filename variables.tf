@@ -74,7 +74,7 @@ variable "alarm_rule_silence_time" {
 }
 variable "alarm_rule_effective_interval" {
   description = "The interval of effecting alarm rule. It foramt as 'hh:mm-hh:mm', like '0:00-4:00'."
-  type        = "string"
+  type        = string
   default     = "0:00-2:00"
 }
 
