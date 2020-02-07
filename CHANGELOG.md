@@ -4,6 +4,7 @@ IMPROVEMENTS:
 
 - Modify some parameters [GH-8]
 - Modify outputs.tf [GH-9]
+- Create a new example to distinguish existing instance [GH-15]
 
 ## 1.1.0 (February 1, 2020)
 

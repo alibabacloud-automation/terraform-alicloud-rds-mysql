@@ -18,6 +18,8 @@ terraform-alicloud-rds-mysql
 
 ## 用法
 
+#### 创建新的Rds实例
+
 ```hcl
 module "mysql" {
   source = "terraform-alicloud-modules/rds-mysql/alicloud"
@@ -91,9 +93,76 @@ module "mysql" {
 }
 ```
 
+### 使用已经存在的Rds实例
+
+```hcl
+module "mysql" {
+  source = "terraform-alicloud-modules/rds-mysql/alicloud"
+  region = "cn-beijing"
+
+  #################
+  # Rds Instance
+  #################
+  existing_instance_id="rm-2ze9tmt47xxxxxxx"
+                    
+
+  ################
+  # Backup Policy
+  ################
+
+  create_backup_policy        =true
+  preferred_backup_period     = ["Monday", "Wednesday"]
+  preferred_backup_time       = "00:00Z-01:00Z"
+  backup_retention_period     = 7
+  log_backup_retention_period = 7
+  enable_backup_log           = true
+
+  ##############
+  # connection
+  ##############
+  allocate_public_connection  = false
+  connection_prefix           = "mysqlconnection"
+
+  ###########
+  #databases#
+  ###########
+  account_privilege = "ReadWrite"
+  databases = [
+    {
+      name          = "mysqldb"
+      character_set = "utf8"
+      description   = "db1"
+    }
+  ]
+
+  #################
+  # Rds Database account
+  #################
+  account_name     = "account_name"
+  account_password = "yourpassword123"
+  tags = {
+    Env      = "Private"
+    Location = "Secret"
+  }
+
+  #############
+  # cms_alarm
+  #############
+  alarm_rule_name            = "CmsAlarmForMysql"
+  alarm_rule_statistics      = "Average"
+  alarm_rule_period          = 300
+  alarm_rule_operator        = "<="
+  alarm_rule_threshold       = 35
+  alarm_rule_triggered_count = 2
+  alarm_rule_contact_groups  = ["MySQL", "AccCms"]
+  enable_alarm_rule=true
+}
+```
+
 ## 示例
 
-* [Mysql 实例完整创建示例创建示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/tree/master/examples)
+* [创建 MySql 完整示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/tree/master/examples/complete)
+* [使用已经存在的 Rds 实例创建 MySql 示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/tree/master/examples/using-existing-rds-instance)
 
 ## 子模块
 

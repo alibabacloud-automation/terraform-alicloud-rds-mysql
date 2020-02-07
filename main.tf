@@ -76,7 +76,7 @@ resource "alicloud_cms_alarm" "cpu_usage" {
   project = local.project
   metric  = "CpuUsage"
   dimensions = {
-    instanceId = alicloud_db_instance.this.0.id
+    instanceId = local.this_instance_id
     device     = "/dev/vda1,/dev/vdb1"
   }
   statistics      = var.alarm_rule_statistics
@@ -94,7 +94,7 @@ resource "alicloud_cms_alarm" "disk_usage" {
   project = local.project
   metric  = "DiskUsage"
   dimensions = {
-    instanceId = alicloud_db_instance.this.0.id
+    instanceId = local.this_instance_id
     device     = "/dev/vda1,/dev/vdb1"
   }
   statistics      = var.alarm_rule_statistics
@@ -112,7 +112,7 @@ resource "alicloud_cms_alarm" "memory_usage" {
   project = local.project
   metric  = "MemoryUsage"
   dimensions = {
-    instanceId = alicloud_db_instance.this.0.id
+    instanceId = local.this_instance_id
     device     = "/dev/vda1,/dev/vdb1"
   }
   statistics      = var.alarm_rule_statistics
@@ -130,7 +130,7 @@ resource "alicloud_cms_alarm" "network_in_new" {
   project = local.project
   metric  = "MySQL_NetworkInNew"
   dimensions = {
-    instanceId = alicloud_db_instance.this.0.id
+    instanceId = local.this_instance_id
     device     = "/dev/vda1,/dev/vdb1"
   }
   statistics      = var.alarm_rule_statistics
@@ -147,7 +147,7 @@ resource "alicloud_cms_alarm" "network_out_new" {
   project = local.project
   metric  = "MySQL_NetworkOutNew"
   dimensions = {
-    instanceId = alicloud_db_instance.this.0.id
+    instanceId = local.this_instance_id
     device     = "/dev/vda1,/dev/vdb1"
   }
   statistics      = var.alarm_rule_statistics
