@@ -8,14 +8,13 @@ data "alicloud_vpcs" "default" {
   is_default = true
 }
 module "security_group" {
-  source  = "alibaba/security-group/alicloud"
-  region  = var.region
-  vpc_id  = data.alicloud_vpcs.default.ids.0
-  version = "~> 2.0"
+  source = "alibaba/security-group/alicloud"
+  region = var.region
+  vpc_id = data.alicloud_vpcs.default.ids.0
 }
 
 module "mysql" {
-  source = "../modules/mysql-5.7-basic"
+  source = "../../modules/mysql-5.7-basic"
   region = var.region
 
   #################
@@ -37,8 +36,12 @@ module "mysql" {
   backup_retention_period     = 7
   log_backup_retention_period = 7
   enable_backup_log           = true
-  allocate_public_connection  = false
   instance_type               = "rds.mysql.s2.large"
+  ##############
+  # connection
+  ##############
+  allocate_public_connection = false
+  connection_prefix          = "mysqlconnection"
   ###########
   #databases#
   ###########
