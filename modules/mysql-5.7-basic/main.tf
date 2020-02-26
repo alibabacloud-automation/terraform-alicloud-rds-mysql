@@ -17,8 +17,9 @@ data "alicloud_db_instance_classes" "default" {
   storage_type   = var.instance_storage_type
 }
 module "mysql" {
-  source = "../../"
-  region = var.region
+  source  = "../../"
+  region  = var.region
+  profile = var.profile
   #################
   # Rds Instance
   #################

@@ -1,21 +1,27 @@
 variable "region" {
   default = "cn-beijing"
 }
+variable "profile" {
+  default = "default"
+}
 provider "alicloud" {
-  region = var.region
+  region  = var.region
+  profile = var.profile
 }
 data "alicloud_vpcs" "default" {
   is_default = true
 }
 module "security_group" {
-  source = "alibaba/security-group/alicloud"
-  region = var.region
-  vpc_id = data.alicloud_vpcs.default.ids.0
+  source  = "alibaba/security-group/alicloud"
+  region  = var.region
+  profile = var.profile
+  vpc_id  = data.alicloud_vpcs.default.ids.0
 }
 
 module "mysql" {
-  source = "../../modules/mysql-5.7-basic"
-  region = var.region
+  source  = "../../modules/mysql-5.7-basic"
+  region  = var.region
+  profile = var.profile
 
   #################
   # Rds Instance

@@ -25,14 +25,14 @@ For new instance
 
 ```hcl
 module "mysql" {
-  source = "terraform-alicloud-modules/rds-mysql/alicloud"
-  region = "cn-hangzhou"
+  source    = "terraform-alicloud-modules/rds-mysql/alicloud"
+  region    = "cn-hangzhou"
+  profile   = "Your-Profile-Name"
 
   ###############
   #Rds Instance#
   ###############
   
-  engine               = "MySQL"
   engine_version       = "5.7"
   connection_prefix    = "developmentabc"
   vswitch_id           = "vsw-bp1tili2u5kxxxxxx"
@@ -101,8 +101,9 @@ For existing instance
 ```hcl
 
 module "mysql" {
-  source = "terraform-alicloud-modules/rds-mysql/alicloud"
-  region = "cn-beijing"
+  source    = "terraform-alicloud-modules/rds-mysql/alicloud"
+  region    = "cn-beijing"
+  profile   = "Your-Profile-Name"
 
   #################
   # Rds Instance
@@ -185,6 +186,12 @@ module "mysql" {
 
 * This module using AccessKey and SecretKey are from `profile` and `shared_credentials_file`.
 If you have not set them yet, please install [aliyun-cli](https://github.com/aliyun/aliyun-cli#installation) and configure it.
+
+Submit Issues
+-------------
+If you have any problems when using this module, please opening a [provider issue](https://github.com/terraform-providers/terraform-provider-alicloud/issues/new) and let us know.
+
+**Note:** There does not recommend to open an issue on this repo.
 
 Authors
 -------

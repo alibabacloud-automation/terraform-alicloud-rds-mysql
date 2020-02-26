@@ -1,12 +1,16 @@
 variable "region" {
   default = "cn-beijing"
 }
+variable "profile" {
+  default = "default"
+}
 provider "alicloud" {
   region = var.region
 }
 module "mysql" {
-  source = "../../"
-  region = var.region
+  source  = "../../"
+  region  = var.region
+  profile = var.profile
   #################
   # Rds Instance
   #################
