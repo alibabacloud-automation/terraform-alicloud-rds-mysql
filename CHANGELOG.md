@@ -1,4 +1,9 @@
 ## 1.3.0 (Unreleased)
+
+IMPROVEMENTS:
+
+- Remove the readme redundant parameter [GH-18]( https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/18)
+
 ## 1.2.0 (February 7, 2020)
 
 IMPROVEMENTS:
