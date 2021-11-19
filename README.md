@@ -17,7 +17,10 @@ These types of resources are supported:
 
 ## Terraform versions
 
-This module requires Terraform 0.12 and Terraform Provider Alicloud 1.56.0+.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.0 |
+| <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | >= 1.56.0 |
 
 ## Usage
 
@@ -26,8 +29,6 @@ For new instance
 ```hcl
 module "mysql" {
   source    = "terraform-alicloud-modules/rds-mysql/alicloud"
-  region    = "cn-hangzhou"
-  profile   = "Your-Profile-Name"
 
   ###############
   #Rds Instance#
@@ -102,8 +103,6 @@ For existing instance
 
 module "mysql" {
   source    = "terraform-alicloud-modules/rds-mysql/alicloud"
-  region    = "cn-beijing"
-  profile   = "Your-Profile-Name"
 
   #################
   # Rds Instance
@@ -183,9 +182,69 @@ module "mysql" {
 * [mysql-8.0-high-availability](https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/tree/master/modules/mysql-8.0-high-availability)
 
 ## Notes
+From the version v1.4.0, the module has removed the following `provider` setting:
 
-* This module using AccessKey and SecretKey are from `profile` and `shared_credentials_file`.
-If you have not set them yet, please install [aliyun-cli](https://github.com/aliyun/aliyun-cli#installation) and configure it.
+```hcl
+provider "alicloud" {
+  profile                 = var.profile != "" ? var.profile : null
+  shared_credentials_file = var.shared_credentials_file != "" ? var.shared_credentials_file : null
+  region                  = var.region != "" ? var.region : null
+  skip_region_validation  = var.skip_region_validation
+  configuration_source    = "terraform-alicloud-modules/rds-mysql"
+}
+```
+
+If you still want to use the `provider` setting to apply this module, you can specify a supported version, like 1.3.0:
+
+```hcl
+module "rds-mysql" {
+  source  = "terraform-alicloud-modules/rds-mysql/alicloud"
+  version     = "1.3.0"
+  region      = "cn-hangzhou"
+  profile     = "Your-Profile-Name"
+  create_backup_policy        =true
+  preferred_backup_period     = ["Monday", "Wednesday"]
+  preferred_backup_time       = "00:00Z-01:00Z"
+  backup_retention_period     = 7
+  log_backup_retention_period = 7
+  enable_backup_log           = true
+}
+```
+
+If you want to upgrade the module to 1.4.0 or higher in-place, you can define a provider which same region with
+previous region:
+
+```hcl
+provider "alicloud" {
+   region  = "cn-hangzhou"
+   profile = "Your-Profile-Name"
+}
+module "rds-mysql" {
+  source  = "terraform-alicloud-modules/rds-mysql/alicloud"
+  create_backup_policy        =true
+  preferred_backup_period     = ["Monday", "Wednesday"]
+  preferred_backup_time       = "00:00Z-01:00Z"
+  backup_retention_period     = 7
+  log_backup_retention_period = 7
+  enable_backup_log           = true
+}
+```
+or specify an alias provider with a defined region to the module using `providers`:
+
+```hcl
+provider "alicloud" {
+  region  = "cn-hangzhou"
+  profile = "Your-Profile-Name"
+  alias   = "hz"
+}
+module "rds-mysql" {
+  source  = "terraform-alicloud-modules/rds-mysql/alicloud"
+  providers = {
+    alicloud = alicloud.hz
+  }
+
+}
+```
 
 Submit Issues
 -------------
