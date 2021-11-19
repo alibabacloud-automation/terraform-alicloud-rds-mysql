@@ -1,4 +1,10 @@
-## 1.4.0 (Unreleased)
+## 1.5.0 (Unreleased)
+## 1.4.0 (November 19, 2021)
+
+IMPROVEMENTS:
+
+- Removes the provider setting and improves the Readme [GH-20](https://github.com/terraform-alicloud-modules/terraform-alicloud-rds-mysql/pull/20)
+
 ## 1.3.0 (February 28, 2020)
 
 IMPROVEMENTS:
