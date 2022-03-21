@@ -1,86 +1,84 @@
-variable "region" {
-  default = "cn-beijing"
+data "alicloud_db_zones" "default" {
 }
-variable "profile" {
-  default = "default"
+
+data "alicloud_cms_alarm_contact_groups" "default" {
 }
-provider "alicloud" {
-  region  = var.region
-  profile = var.profile
+
+data "alicloud_db_instance_classes" "default" {
+  engine         = "MySQL"
+  engine_version = "5.6"
 }
-data "alicloud_vpcs" "default" {
-  is_default = true
+
+module "vpc" {
+  source             = "alibaba/vpc/alicloud"
+  create             = true
+  vpc_cidr           = "172.16.0.0/16"
+  vswitch_cidrs      = ["172.16.0.0/21"]
+  availability_zones = [data.alicloud_db_zones.default.zones.0.id]
 }
+
 module "security_group" {
-  source  = "alibaba/security-group/alicloud"
-  region  = var.region
-  profile = var.profile
-  vpc_id  = data.alicloud_vpcs.default.ids.0
+  source = "alibaba/security-group/alicloud"
+  vpc_id = module.vpc.this_vpc_id
 }
 
 module "mysql" {
-  source  = "../../modules/mysql-5.7-basic"
-  region  = var.region
-  profile = var.profile
+  source = "../.."
 
-  #################
-  # Rds Instance
-  #################
-  vswitch_id         = data.alicloud_vpcs.default.vpcs.0.vswitch_ids.0
-  instance_name      = "MysqlInstance"
-  security_group_ids = [module.security_group.this_security_group_id]
-  security_ips = [
-    "11.193.54.0/24",
-    "101.37.74.0/24",
-    "10.137.42.0/24",
-  "121.43.18.0/24"]
-  #################
-  # Rds Backup policy
-  #################
-  preferred_backup_period     = ["Monday", "Wednesday"]
-  preferred_backup_time       = "00:00Z-01:00Z"
-  backup_retention_period     = 7
-  log_backup_retention_period = 7
-  enable_backup_log           = true
-  instance_type               = "rds.mysql.s2.large"
-  ##############
-  # connection
-  ##############
-  allocate_public_connection = false
-  connection_prefix          = "mysqlconnection"
-  ###########
-  #databases#
-  ###########
-  account_privilege = "ReadWrite"
+  #databases
+  create_instance = true
+  create_database = true
+  create_account  = true
+
   databases = [
     {
-      name          = "dbuserv1"
+      name          = "tf_testacc_db"
       character_set = "utf8"
-      description   = "db1"
-    },
-    {
-      name          = "dbuserv2"
-      character_set = "utf8"
-      description   = "db2"
-    },
+      description   = var.description
+    }
   ]
-  #################
-  # Rds Database account
-  #################
-  account_name     = "account_name1"
-  account_password = "yourpassword123"
-  tags = {
-    Env      = "Private"
-    Location = "Secret"
-  }
-  #############
-  # cms_alarm
-  #############
-  alarm_rule_name            = "CmsAlarmForMysql"
-  alarm_rule_statistics      = "Average"
-  alarm_rule_period          = 300
-  alarm_rule_operator        = "<="
-  alarm_rule_threshold       = 35
-  alarm_rule_triggered_count = 2
-  alarm_rule_contact_groups  = ["MySQL", "AccCms"]
+  account_name      = "account_name"
+  account_password  = var.account_password
+  account_type      = "Normal"
+  account_privilege = "ReadOnly"
+
+  #alicloud_db_instance
+  engine_version       = "5.6"
+  instance_name        = var.instance_name
+  instance_type        = data.alicloud_db_instance_classes.default.instance_classes.0.instance_class
+  instance_storage     = var.instance_storage
+  instance_charge_type = var.instance_charge_type
+  period               = var.period
+  security_ips         = var.security_ips
+  vswitch_id           = module.vpc.this_vswitch_ids[0]
+  security_group_ids   = [module.security_group.this_security_group_id]
+  tags                 = var.tags
+
+  #alicloud_db_backup_policy
+  create_backup_policy = true
+
+  backup_retention_period     = var.backup_retention_period
+  log_backup_retention_period = var.log_backup_retention_period
+  preferred_backup_time       = var.preferred_backup_time
+  preferred_backup_period     = var.preferred_backup_period
+  enable_backup_log           = var.enable_backup_log
+
+  #alicloud_db_connection
+  allocate_public_connection = true
+
+  connection_prefix = "tf-testacc"
+  port              = 3306
+
+  #alicloud_cms_alarm
+  enable_alarm_rule             = var.enable_alarm_rule
+  alarm_rule_name               = var.alarm_rule_name
+  alarm_rule_statistics         = var.alarm_rule_statistics
+  alarm_rule_operator           = var.alarm_rule_operator
+  alarm_rule_threshold          = var.alarm_rule_threshold
+  alarm_rule_triggered_count    = var.alarm_rule_triggered_count
+  alarm_rule_period             = var.alarm_rule_period
+  alarm_rule_contact_groups     = data.alicloud_cms_alarm_contact_groups.default.names
+  alarm_rule_silence_time       = var.alarm_rule_silence_time
+  alarm_rule_effective_interval = var.alarm_rule_effective_interval
+
 }
