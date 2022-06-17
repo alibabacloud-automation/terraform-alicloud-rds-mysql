@@ -1,3 +1,7 @@
+provider "alicloud" {
+  region = "eu-central-1"
+}
+
 data "alicloud_db_zones" "default" {
 }
 
