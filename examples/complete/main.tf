@@ -3,14 +3,23 @@ provider "alicloud" {
 }
 
 data "alicloud_db_zones" "default" {
+  engine                   = "MySQL"
+  engine_version           = "8.0"
+  instance_charge_type     = "PostPaid"
+  category                 = "Basic"
+  db_instance_storage_type = "cloud_essd"
 }
 
 data "alicloud_cms_alarm_contact_groups" "default" {
 }
 
 data "alicloud_db_instance_classes" "default" {
-  engine         = "MySQL"
-  engine_version = "5.6"
+  zone_id                  = data.alicloud_db_zones.default.zones.0.id
+  engine                   = "MySQL"
+  engine_version           = "8.0"
+  category                 = "Basic"
+  db_instance_storage_type = "cloud_essd"
+  instance_charge_type     = "PostPaid"
 }
 
 module "vpc" {
@@ -47,7 +56,7 @@ module "mysql" {
   account_privilege = "ReadOnly"
 
   #alicloud_db_instance
-  engine_version       = "5.6"
+  engine_version       = "8.0"
   instance_name        = var.instance_name
   instance_type        = data.alicloud_db_instance_classes.default.instance_classes.0.instance_class
   instance_storage     = var.instance_storage
