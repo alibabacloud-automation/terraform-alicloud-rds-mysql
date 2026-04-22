@@ -1,6 +1,6 @@
 locals {
   engine                = "MySQL"
-  this_instance_id      = var.existing_instance_id != "" ? var.existing_instance_id : concat(alicloud_db_instance.this.*.id, [""])[0]
+  this_instance_id      = var.existing_instance_id != "" ? var.existing_instance_id : concat(alicloud_db_instance.this[*].id, [""])[0]
   create_more_resources = var.create_instance
   create_account        = local.create_more_resources && var.create_account
   create_database       = local.create_more_resources && var.create_database

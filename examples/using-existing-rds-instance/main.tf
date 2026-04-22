@@ -1,9 +1,7 @@
 variable "region" {
   default = "eu-central-1"
 }
-variable "profile" {
-  default = "default"
-}
+
 provider "alicloud" {
   region = var.region
 }
@@ -16,11 +14,8 @@ data "alicloud_db_zones" "default" {
   db_instance_storage_type = "cloud_essd"
 }
 
-data "alicloud_cms_alarm_contact_groups" "default" {
-}
-
 data "alicloud_db_instance_classes" "default" {
-  zone_id                  = data.alicloud_db_zones.default.zones.0.id
+  zone_id                  = data.alicloud_db_zones.default.zones[0].id
   engine                   = "MySQL"
   engine_version           = "8.0"
   category                 = "Basic"
@@ -30,25 +25,27 @@ data "alicloud_db_instance_classes" "default" {
 
 module "vpc" {
   source             = "alibaba/vpc/alicloud"
+  version            = "2.0.0"
   create             = true
   vpc_cidr           = "172.16.0.0/16"
   vswitch_cidrs      = ["172.16.0.0/21"]
-  availability_zones = [data.alicloud_db_zones.default.zones.0.id]
+  availability_zones = [data.alicloud_db_zones.default.zones[0].id]
 }
 
 module "security_group" {
-  source = "alibaba/security-group/alicloud"
-  vpc_id = module.vpc.this_vpc_id
+  source  = "alibaba/security-group/alicloud"
+  version = "3.0.0"
+  vpc_id  = module.vpc.this_vpc_id
 }
 
 resource "alicloud_db_instance" "default" {
   engine                   = "MySQL"
   engine_version           = "8.0"
-  instance_type            = data.alicloud_db_instance_classes.default.instance_classes.0.instance_class
-  instance_storage         = data.alicloud_db_instance_classes.default.instance_classes.0.storage_range.min
+  instance_type            = data.alicloud_db_instance_classes.default.instance_classes[0].instance_class
+  instance_storage         = data.alicloud_db_instance_classes.default.instance_classes[0].storage_range.min
   instance_charge_type     = "Postpaid"
   instance_name            = "terraform-example"
-  vswitch_id               = module.vpc.vswitch_ids.0
+  vswitch_id               = module.vpc.vswitch_ids[0]
   monitoring_period        = "60"
   db_instance_storage_type = "cloud_essd"
   security_group_ids       = [module.security_group.this_security_group_id]
@@ -57,8 +54,7 @@ resource "alicloud_db_instance" "default" {
 
 module "mysql" {
   source  = "../../"
-  region  = var.region
-  profile = var.profile
+
   #################
   # Rds Instance
   #################

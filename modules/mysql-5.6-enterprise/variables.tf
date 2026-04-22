@@ -11,16 +11,6 @@ variable "profile" {
   type        = string
   default     = ""
 }
-variable "shared_credentials_file" {
-  description = "(Deprecated from version 1.4.0)This is the path to the shared credentials file. If this is not set and a profile is specified, $HOME/.aliyun/config.json will be used."
-  type        = string
-  default     = ""
-}
-variable "skip_region_validation" {
-  description = "(Deprecated from version 1.4.0)Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet)."
-  type        = bool
-  default     = false
-}
 
 #############
 # cms_alarm
@@ -31,20 +21,10 @@ variable "alarm_rule_name" {
   type        = string
   default     = ""
 }
-variable "metric" {
-  description = "Name of the monitoring metrics corresponding to a project, such as 'CPUUtilization' and 'networkin_rate'. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm). "
-  type        = string
-  default     = ""
-}
 variable "alarm_rule_period" {
   description = "Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds. "
   type        = number
   default     = 300
-}
-variable "dimensions" {
-  description = "Map of the resources associated with the alarm rule, such as 'instanceId', 'device' and 'port'. Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm)."
-  type        = map(string)
-  default     = {}
 }
 variable "alarm_rule_statistics" {
   description = "Statistical method. It must be consistent with that defined for metrics. Valid values: ['Average', 'Minimum', 'Maximum']. Default to 'Average'. "
@@ -86,11 +66,6 @@ variable "enable_alarm_rule" {
   type        = bool
   default     = true
 }
-variable "webhook" {
-  description = "The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string. "
-  type        = string
-  default     = ""
-}
 
 #################
 # Mysql Instance
@@ -101,22 +76,11 @@ variable "instance_storage_type" {
   type        = string
   default     = "local_ssd"
 }
-variable "existing_instance_id" {
-  description = "The Id of an existing mysql instance. If set, the `create_instance` will be ignored."
-  type        = string
-  default     = ""
-}
 
 variable "create_instance" {
   description = "Whether to create mysql instance. If false, you can use a existing MySQL instance by setting `existing_instance_id`."
   type        = bool
   default     = true
-}
-
-variable "engine_version" {
-  description = "RDS Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`"
-  type        = string
-  default     = ""
 }
 
 variable "instance_name" {
@@ -128,11 +92,6 @@ variable "instance_charge_type" {
   description = "The instance charge type. Valid values: Prepaid and Postpaid. Default to Postpaid."
   type        = string
   default     = "Postpaid"
-}
-variable "mysql_period" {
-  description = "The duration that you will buy MySQL Instance (in month). It is valid when instance_charge_type is PrePaid. Valid values: [1~9], 12, 24, 36. Default to 1"
-  type        = number
-  default     = 1
 }
 variable "instance_storage" {
   description = "The storage capacity of the instance. Unit: GB. The storage capacity increases at increments of 5 GB. For more information, see [Instance Types](https://www.alibabacloud.com/help/doc-detail/26312.htm)."

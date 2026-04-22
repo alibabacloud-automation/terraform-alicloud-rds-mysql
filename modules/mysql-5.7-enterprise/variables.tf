@@ -11,16 +11,6 @@ variable "profile" {
   type        = string
   default     = ""
 }
-variable "shared_credentials_file" {
-  description = "(Deprecated from version 1.4.0)This is the path to the shared credentials file. If this is not set and a profile is specified, $HOME/.aliyun/config.json will be used."
-  type        = string
-  default     = ""
-}
-variable "skip_region_validation" {
-  description = "(Deprecated from version 1.4.0)Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet)."
-  type        = bool
-  default     = false
-}
 
 #############
 # cms_alarm
@@ -88,22 +78,10 @@ variable "instance_storage_type" {
   default     = "local_ssd"
 }
 
-variable "existing_instance_id" {
-  description = "The Id of an existing mysql instance. If set, the `create_instance` will be ignored."
-  type        = string
-  default     = ""
-}
-
 variable "create_instance" {
   description = "Whether to create mysql instance. If false, you can use a existing MySQL instance by setting `existing_instance_id`."
   type        = bool
   default     = true
-}
-
-variable "engine_version" {
-  description = "RDS Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`"
-  type        = string
-  default     = ""
 }
 
 variable "instance_name" {
@@ -115,11 +93,6 @@ variable "instance_charge_type" {
   description = "The instance charge type. Valid values: Prepaid and Postpaid. Default to Postpaid."
   type        = string
   default     = "Postpaid"
-}
-variable "period" {
-  description = "The duration that you will buy MySQL Instance (in month). It is valid when instance_charge_type is PrePaid. Valid values: [1~9], 12, 24, 36. Default to 1"
-  type        = number
-  default     = 1
 }
 variable "instance_storage" {
   description = "The storage capacity of the instance. Unit: GB. The storage capacity increases at increments of 5 GB. For more information, see [Instance Types](https://www.alibabacloud.com/help/doc-detail/26312.htm)."
