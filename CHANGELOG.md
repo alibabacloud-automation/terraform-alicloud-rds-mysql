@@ -1,3 +1,5 @@
+## [2.0.1](https://github.com/alibabacloud-automation/terraform-alicloud-rds-mysql/compare/v2.0.0...v2.0.1) (2026-07-10)
+
 ## [2.0.0](https://github.com/alibabacloud-automation/terraform-alicloud-rds-mysql/compare/v1.4.0...v2.0.0) (2026-04-22)
 
 
