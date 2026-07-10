@@ -1,3 +1,10 @@
+# 下线公告
+
+感谢您对阿里云 Terraform Module 的关注，即日起，本 Module 将停止维护并会在将来正式下线。推荐您使用 [terraform-alicloud-rds](https://github.com/alibabacloud-automation/terraform-alicloud-rds) 作为阿里云 RDS MySQL 资源的替代方案。更多丰富的 Module 可在 [阿里云 Terraform Module](https://registry.terraform.io/browse/modules?provider=alibaba) 中搜索获取。
+
+再次感谢您的理解和合作。
+
+
 terraform-alicloud-rds-mysql
 -------
 
