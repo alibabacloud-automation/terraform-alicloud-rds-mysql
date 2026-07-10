@@ -1,3 +1,10 @@
+# Deprecation Notice
+
+Thank you for your interest in Alibaba Cloud Terraform Modules. This module will stop being maintained from now on and will be formally deprecated in the future. We recommend using [terraform-alicloud-rds](https://github.com/alibabacloud-automation/terraform-alicloud-rds) as the replacement module for Alibaba Cloud RDS MySQL resources. More Terraform Modules are available in the [Alibaba Cloud Terraform Module Registry](https://registry.terraform.io/browse/modules?provider=alibaba).
+
+Thank you again for your understanding and cooperation.
+
+
 Terraform module which create a MySql database based on Alibaba Cloud RDS Service.   
 terraform-alicloud-rds-mysql
 -------
